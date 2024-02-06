@@ -1,0 +1,78 @@
+{
+  "env": { "browser": true, "node": true, "es2022": true },
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-useless-constructor": "error",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "error",
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "alphabetize": { "order": "asc", "caseInsensitive": true },
+        "newlines-between": "always"
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]|[A-Z]*Props",
+          "match": true
+        }
+      }
+    ],
+    "@typescript-eslint/array-type": ["error", { "default": "array" }],
+    "@typescript-eslint/ban-tslint-comment": "error",
+    "@typescript-eslint/method-signature-style": ["error", "property"],
+    "@typescript-eslint/prefer-nullish-coalescing": [
+      "error",
+      {
+        "ignoreTernaryTests": false,
+        "ignoreConditionalTests": false
+      }
+    ],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+  },
+  "overrides": [
+    {
+      "files": ["src/app/api/interfaces/*"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
+}
